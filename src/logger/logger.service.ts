@@ -1,4 +1,4 @@
-import { ILogger } from "./logger.service.interface";
+import { ILoggerService } from "./logger.service.interface";
 import { ISettingsParam, Logger } from "tslog";
 import { injectable } from "inversify";
 import "reflect-metadata";
@@ -8,7 +8,7 @@ const logObject = {
 };
 
 @injectable()
-export class LoggerService implements ILogger {
+export class LoggerService implements ILoggerService {
     private logger: Logger<{}>;
     private loggerSettings: ISettingsParam<{}> = {
         prettyLogTemplate: "{{hh}}:{{MM}}:{{ss}} {{logLevelName}}",

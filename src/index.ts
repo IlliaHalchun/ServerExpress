@@ -7,7 +7,7 @@ import { IErrorHandler } from "./errors/errorHandler.interface";
 import { ErrorHandler } from "./errors/errorHandler";
 import { IUserService } from "./services/users/users.service.interface";
 import { UsersService } from "./services/users/users.service";
-import { ILogger } from "./logger/logger.service.interface";
+import { ILoggerService } from "./logger/logger.service.interface";
 import { LoggerService } from "./logger/logger.service";
 
 const container = new Container();
@@ -26,7 +26,7 @@ container
     .to(UsersService)
     .inSingletonScope();
 container
-    .bind<ILogger>(TYPES.LoggerService)
+    .bind<ILoggerService>(TYPES.LoggerService)
     .to(LoggerService)
     .inSingletonScope();
 

@@ -6,7 +6,7 @@ import { TYPES } from "./types";
 import { IUsersController } from "./controllers/users/users.controller.interface";
 import { json } from "body-parser";
 import { IErrorHandler } from "./errors/errorHandler.interface";
-import { ILogger } from "./logger/logger.service.interface";
+import { ILoggerService } from "./logger/logger.service.interface";
 
 @injectable()
 export class App {
@@ -18,7 +18,7 @@ export class App {
         @inject(TYPES.UsersController)
         private usersController: IUsersController,
         @inject(TYPES.ErrorHandler) private errorHandler: IErrorHandler,
-        @inject(TYPES.LoggerService) private LoggerService: ILogger
+        @inject(TYPES.LoggerService) private LoggerService: ILoggerService
     ) {
         this.app = express();
         this.port = 3000;

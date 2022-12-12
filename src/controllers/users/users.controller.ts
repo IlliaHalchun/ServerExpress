@@ -1,11 +1,13 @@
 import express, { Response, Request, NextFunction } from "express";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import "reflect-metadata";
 import { BaseController } from "../../common/baseController/base.controller";
 import { IRouteInfo } from "../../common/route.interface";
 import { ValidationMidlevare } from "../../common/validate.midlevare";
 import { UsersLoginDTO } from "../../dto/users/users.login.dto";
 import { UsersRegisterDTO } from "../../dto/users/users.register.dto";
+import { ILoggerService } from "../../logger/logger.service.interface";
+import { TYPES } from "../../types";
 import { IUsersController } from "./users.controller.interface";
 
 @injectable()
@@ -23,8 +25,9 @@ export class UsersController
         { path: "/register", method: "get", callback: this.register },
     ];
 
-    constructor() {
-        super();
+    constructor(@inject(TYPES.LoggerService) LoggerService: ILoggerService) {
+        super(LoggerService);
+        this.routeName = "/users";
         this.bindRoutes(this.routes);
     }
 
