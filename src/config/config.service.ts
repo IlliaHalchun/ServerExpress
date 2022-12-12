@@ -1,7 +1,12 @@
+import * as dotenv from "dotenv";
 import { IConfigService } from "./config.service.interface";
 
 export class CongigService implements IConfigService {
-    get<T extends string | number>(key: string): T {
-        console.log();
+    constructor() {
+        let config = dotenv.config();
+        if (config.error) {
+        }
     }
+
+    get<T extends string | number>(key: string): T {}
 }
